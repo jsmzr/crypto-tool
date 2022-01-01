@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.jsmzr.cryptotool.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.jsmzr.cryptotool.MyBundle
 
 class MyApplicationService {
 
