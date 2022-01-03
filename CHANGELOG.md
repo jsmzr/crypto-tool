@@ -4,4 +4,18 @@
 
 ## [Unreleased]
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- Hash
+  - SHA1
+  - SHA2
+  - SHA3
+  - MD5, MD2
+  - RipeMD
+- Mac
+  - HmacSH1
+  - HmacSH2
+  - HmacMD5
+- Symmetric
+  - AES
+  - DES
+  - 3DES
+

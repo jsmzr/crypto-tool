@@ -7,12 +7,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.jsmzr.cryptotool.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.jsmzr.cryptotool.services.MyProjectService"/>
+        <toolWindow id="CryptoTool" factoryClass="com.github.jsmzr.cryptotool.CryptoToolWindowFactory" anchor="bottom"></toolWindow>
+        <notificationGroup id="CryptoTool" displayType="BALLOON"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.jsmzr.cryptotool.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
