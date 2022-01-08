@@ -1,6 +1,6 @@
 # crypto-tool
 
-This is an encryption tool that provides Hash, Mac, Symmetric related algorithm support.
+This is an encryption tool that provides Hash, Mac, Symmetric, Asymmetric and Signature algorithm support.
 
 ## ToDo
 - [x] Create a new [IntelliJ Platform Plugin Template][template] project.
@@ -16,7 +16,7 @@ This is an encryption tool that provides Hash, Mac, Symmetric related algorithm 
   about releases containing new features and fixes.
 
 <!-- Plugin description -->
-This is an encryption tool that provides Hash, Mac, Symmetric related algorithm support.
+This is an encryption tool that provides Hash, Mac, Symmetric, Asymmetric and Signature algorithm support.
 
 - Hash
   - SHA1
