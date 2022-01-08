@@ -3,5 +3,11 @@
 # crypto-tool Changelog
 
 ## [Unreleased]
+
+## [0.0.1]
+
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+
+- Add Hash(digest), Mac(Message Authentication Code), Symmetric encrypt, Asymmetric encrypt and Signature
+ 
+
