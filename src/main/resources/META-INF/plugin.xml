@@ -1,13 +1,13 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.jsmzr.cryptotool</id>
-    <name>crypto-tool</name>
+    <name>Crypto Tool</name>
     <vendor>jsmzr</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="CryptoTool" factoryClass="com.github.jsmzr.cryptotool.CryptoToolWindowFactory" anchor="bottom"></toolWindow>
+        <toolWindow id="CryptoTool" factoryClass="com.github.jsmzr.cryptotool.CryptoToolWindowFactory" anchor="bottom"/>
         <notificationGroup id="CryptoTool" displayType="BALLOON"/>
     </extensions>
 </idea-plugin>
