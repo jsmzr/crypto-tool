@@ -3,19 +3,11 @@
 # crypto-tool Changelog
 
 ## [Unreleased]
+
+## [0.0.1]
+
 ### Added
-- Hash
-  - SHA1
-  - SHA2
-  - SHA3
-  - MD5, MD2
-  - RipeMD
-- Mac
-  - HmacSH1
-  - HmacSH2
-  - HmacMD5
-- Symmetric
-  - AES
-  - DES
-  - 3DES
+
+- Add Hash(digest), Mac(Message Authentication Code), Symmetric encrypt, Asymmetric encrypt and Signature
+ 
 

@@ -1,19 +1,18 @@
 package com.github.jsmzr.cryptotool.ui;
 
-import com.github.jsmzr.cryptotool.constants.HashType;
-import com.github.jsmzr.cryptotool.constants.MacType;
-import com.github.jsmzr.cryptotool.constants.SymmetricType;
+import com.github.jsmzr.cryptotool.constants.*;
+import com.github.jsmzr.cryptotool.icons.Icons;
+import com.github.jsmzr.cryptotool.model.SignatureInfo;
 import com.github.jsmzr.cryptotool.model.SymmetricInfo;
-import com.github.jsmzr.cryptotool.util.EncodeUtil;
-import com.github.jsmzr.cryptotool.util.HashUtil;
-import com.github.jsmzr.cryptotool.util.MacUtil;
-import com.github.jsmzr.cryptotool.util.SymmetricUtil;
+import com.github.jsmzr.cryptotool.util.*;
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.project.Project;
 
 import javax.swing.*;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyPair;
+import java.util.stream.IntStream;
 
 public class CryptoToolMainWindow {
     private JPanel root;
@@ -24,23 +23,49 @@ public class CryptoToolMainWindow {
     private JTextArea rightUtf8Text;
     private JTextArea leftHexText;
     private JTextArea leftBase64Text;
-    private JComboBox hashComboBox;
+    private JComboBox<String> hashComboBox;
     private JButton encodeButton;
     private JTextArea rightBase64Text;
     private JTextArea rightHexText;
-    private JComboBox macComboBox;
+    private JComboBox<String> macComboBox;
     private JTextField macKeyText;
     private JButton macButton;
-    private JComboBox symmetricComboBox;
+    private JComboBox<SymmetricInfo> symmetricComboBox;
     private JTextField symmetricKeyText;
     private JTextField symmetricIvText;
     private JButton symmetricDecryptButton;
     private JButton symmetricEncryptButton;
-    private JComboBox tLenComboBox;
+    private JComboBox<Integer> tLenComboBox;
     private JPanel gcmPanel;
     private JPanel ivPanel;
+    private JComboBox<String> asymmetricComboBox;
+    private JTextField asymmetricPublicText;
+    private JTextField asymmetricPrivateText;
+    private JButton asymmetricKeyGenerateButton;
+    private JButton asymmetricDecryptButton;
+    private JButton asymmetricEncryptButton;
+    private JComboBox<Integer> asymmetricKeyComboBox;
+    private JComboBox<SignatureInfo> signatureComboBox;
+    private JTextField signaturePublicText;
+    private JTextField signaturePrivateText;
+    private JComboBox<Integer> rsaKeyLengthComboBox;
+    private JButton rsaKeyGenerateButton;
+    private JButton signatureSignButton;
+    private JButton signatureVerifyButton;
+    private JPanel rsaKeyGeneratorPanel;
+    private JPanel ecKeyGeneratorPanel;
+    private JPanel dsaKeyGeneratorPanel;
+    private JComboBox<Integer> ecKeyLengthComboBox;
+    private JButton ecKeyGenerateButton;
+    private JComboBox<Integer> dsaKeyLengthComboBox;
+    private JButton dsaKeyGenerateButton;
+    private JTextField signText;
+    private JLabel verifyResultLabel;
 
     private static final int[] tLenArr = {96, 104, 112, 120, 128};
+    private static final int[] rsaKeyLength = {512, 1024, 2048, 4096};
+    private static final int[] ecKeyLength = {112, 256, 512, 571};
+    private static final int[] dsaKeyLength = IntStream.range(512, 1025).filter(o -> o % 64 == 0).toArray();
     private int leftTabIndex = 0;
     private int rightTabIndex = 0;
     private byte[] leftContent;
@@ -53,7 +78,8 @@ public class CryptoToolMainWindow {
         initHash();
         initMac();
         initSymmetric();
-
+        initAsymmetric();
+        initSignature();
     }
 
     public JPanel getRoot() {
@@ -77,6 +103,21 @@ public class CryptoToolMainWindow {
                 rightTabIndex = index;
             }
             showRightContent();
+        });
+        centerTabs.addChangeListener(e -> {
+            // If you have selected Signature, then the right side will not be available.
+            if (4 == centerTabs.getSelectedIndex()) {
+                rightTabs.setEnabled(false);
+                rightUtf8Text.setEnabled(false);
+                rightHexText.setEnabled(false);
+                rightBase64Text.setEnabled(false);
+            } else {
+                verifyResultLabel.setVisible(false);
+                rightTabs.setEnabled(true);
+                rightUtf8Text.setEnabled(true);
+                rightHexText.setEnabled(true);
+                rightBase64Text.setEnabled(true);
+            }
         });
         // default select hex
         rightTabs.setSelectedIndex(1);
@@ -164,10 +205,154 @@ public class CryptoToolMainWindow {
         });
     }
 
+    private void initAsymmetric() {
+        for (AsymmetricType value : AsymmetricType.values()) {
+            asymmetricComboBox.addItem(value.getValue());
+        }
+        for (int keyLength : rsaKeyLength) {
+            asymmetricKeyComboBox.addItem(keyLength);
+        }
+        asymmetricEncryptButton.addActionListener(e -> {
+            updateLeftContent();
+            String alg = (String) asymmetricComboBox.getSelectedItem();
+            try {
+                byte[] pubKey = EncodeUtil.base64ToBytes(asymmetricPublicText.getText());
+                rightContent = AsymmetricUtil.encrypt(alg, pubKey, leftContent);
+            } catch (Exception exception) {
+                notify(exception.getMessage());
+                return;
+            }
+            showRightContent();
+        });
+
+        asymmetricDecryptButton.addActionListener(e -> {
+            updateRightContent();
+            String alg = (String) asymmetricComboBox.getSelectedItem();
+            try {
+                byte[] priKey = EncodeUtil.base64ToBytes(asymmetricPrivateText.getText());
+                leftContent = AsymmetricUtil.decrypt(alg, priKey, rightContent);
+            } catch (Exception exception) {
+                notify(exception.getMessage());
+                return;
+            }
+            showLeftContent();
+        });
+
+        asymmetricKeyGenerateButton.addActionListener(e -> {
+            String alg = (String) asymmetricComboBox.getSelectedItem();
+            int keyLength = (int) asymmetricKeyComboBox.getSelectedItem();
+
+            KeyPair keyPair;
+            try {
+                keyPair = AsymmetricUtil.generateKey(alg, keyLength);
+            } catch (Exception exception) {
+                notify(exception.getMessage());
+                return;
+            }
+            asymmetricPublicText.setText(EncodeUtil.bytesToBase64(keyPair.getPublic().getEncoded()));
+            asymmetricPrivateText.setText(EncodeUtil.bytesToBase64(keyPair.getPrivate().getEncoded()));
+        });
+    }
+
+    private void initSignature() {
+        for (SignatureType value : SignatureType.values()) {
+            signatureComboBox.addItem(new SignatureInfo(value.getValue()));
+        }
+        for (int i : rsaKeyLength) {
+            rsaKeyLengthComboBox.addItem(i);
+        }
+        for (int i : ecKeyLength) {
+            ecKeyLengthComboBox.addItem(i);
+        }
+        for (int i : dsaKeyLength) {
+            dsaKeyLengthComboBox.addItem(i);
+        }
+        signatureSignButton.addActionListener(e -> {
+            updateLeftContent();
+            SignatureInfo info = (SignatureInfo) signatureComboBox.getSelectedItem();
+            byte[] signed;
+            try {
+                byte[] priKey = EncodeUtil.base64ToBytes(signaturePrivateText.getText());
+                signed = rightContent = SignatureUtil.sign(info, priKey, leftContent);
+            } catch (Exception exception) {
+                notify(exception.getMessage());
+                return;
+            }
+            signText.setText(EncodeUtil.bytesToBase64(signed));
+        });
+        signatureVerifyButton.addActionListener(e -> {
+            updateLeftContent();
+            SignatureInfo info = (SignatureInfo) signatureComboBox.getSelectedItem();
+            boolean verifyResult;
+            try {
+                byte[] pubKey = EncodeUtil.base64ToBytes(signaturePublicText.getText());
+                byte[] sign = EncodeUtil.base64ToBytes(signText.getText());
+                verifyResult = SignatureUtil.verify(info, pubKey, leftContent, sign);
+            } catch (Exception exception) {
+                notify(exception.getMessage());
+                return;
+            }
+            if (verifyResult) {
+                verifyResultLabel.setIcon(Icons.SUCCESS);
+            } else {
+                verifyResultLabel.setIcon(Icons.FAILED);
+            }
+            verifyResultLabel.setVisible(true);
+        });
+        signText.addPropertyChangeListener(e -> {
+            verifyResultLabel.setVisible(false);
+        });
+        signatureComboBox.addActionListener(e -> {
+            SignatureInfo info = (SignatureInfo) signatureComboBox.getSelectedItem();
+            String keyType = info.getKey();
+            switch (keyType) {
+                case "RSA":
+                    rsaKeyGeneratorPanel.setVisible(true);
+                    ecKeyGeneratorPanel.setVisible(false);
+                    dsaKeyGeneratorPanel.setVisible(false);
+                    break;
+                case "EC":
+                    rsaKeyGeneratorPanel.setVisible(false);
+                    ecKeyGeneratorPanel.setVisible(true);
+                    dsaKeyGeneratorPanel.setVisible(false);
+                    break;
+                case "DSA":
+                    rsaKeyGeneratorPanel.setVisible(false);
+                    ecKeyGeneratorPanel.setVisible(false);
+                    dsaKeyGeneratorPanel.setVisible(true);
+                    break;
+            }
+            signaturePrivateText.setText("");
+            signaturePublicText.setText("");
+            signText.setText("");
+            verifyResultLabel.setVisible(false);
+        });
+
+        rsaKeyGenerateButton.addActionListener(e -> {
+            int keyLength = (int) rsaKeyLengthComboBox.getSelectedItem();
+            updateSignatureKey("RSA", keyLength);
+        });
+        ecKeyGenerateButton.addActionListener(e -> {
+            int keyLength = (int) ecKeyLengthComboBox.getSelectedItem();
+            updateSignatureKey("EC", keyLength);
+        });
+        dsaKeyGenerateButton.addActionListener(e -> {
+            int keyLength = (int) dsaKeyLengthComboBox.getSelectedItem();
+            updateSignatureKey("DSA", keyLength);
+        });
+
+    }
+
     private void notify(String content) {
         NotificationGroupManager.getInstance().getNotificationGroup("CryptoTool")
                 .createNotification(content, NotificationType.ERROR)
                 .notify(project);
+    }
+
+    private void updateSignatureKey(String alg, int length) {
+        KeyPair keyPair = AsymmetricUtil.generateKey(alg, length);
+        signaturePublicText.setText(EncodeUtil.bytesToBase64(keyPair.getPublic().getEncoded()));
+        signaturePrivateText.setText(EncodeUtil.bytesToBase64(keyPair.getPrivate().getEncoded()));
     }
 
     private void updateLeftContent() {

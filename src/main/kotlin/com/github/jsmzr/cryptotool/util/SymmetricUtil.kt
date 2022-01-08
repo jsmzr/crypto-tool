@@ -6,6 +6,10 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
+/**
+ * Symmetric encryption
+ * Provide common symmetrical encryption, such as AES DES and 3DES.
+ */
 object SymmetricUtil {
     /**
      * Symmetric encrypt
