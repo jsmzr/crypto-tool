@@ -1,10 +1,10 @@
 package com.github.jsmzr.cryptotool.ui;
 
 import com.github.jsmzr.cryptotool.constants.*;
-import com.github.jsmzr.cryptotool.icons.Icons;
 import com.github.jsmzr.cryptotool.model.SignatureInfo;
 import com.github.jsmzr.cryptotool.model.SymmetricInfo;
 import com.github.jsmzr.cryptotool.util.*;
+import com.intellij.icons.AllIcons;
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.project.Project;
@@ -293,9 +293,9 @@ public class CryptoToolMainWindow {
                 return;
             }
             if (verifyResult) {
-                verifyResultLabel.setIcon(Icons.SUCCESS);
+                verifyResultLabel.setIcon(AllIcons.General.InspectionsOK);
             } else {
-                verifyResultLabel.setIcon(Icons.FAILED);
+                verifyResultLabel.setIcon(AllIcons.CodeWithMe.CwmTerminate);
             }
             verifyResultLabel.setVisible(true);
         });
