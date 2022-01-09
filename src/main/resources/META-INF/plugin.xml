@@ -7,7 +7,8 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="CryptoTool" factoryClass="com.github.jsmzr.cryptotool.CryptoToolWindowFactory" anchor="bottom"/>
+        <toolWindow id="CryptoTool" factoryClass="com.github.jsmzr.cryptotool.CryptoToolWindowFactory" anchor="bottom"
+                    icon="/icons/tool_bar.svg"/>
         <notificationGroup id="CryptoTool" displayType="BALLOON"/>
     </extensions>
 </idea-plugin>
