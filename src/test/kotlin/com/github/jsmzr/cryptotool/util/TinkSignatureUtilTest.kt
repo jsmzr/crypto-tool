@@ -1,6 +1,6 @@
 package com.github.jsmzr.cryptotool.util
 
-import com.github.jsmzr.cryptotool.constants.TinkMacType
+import com.github.jsmzr.cryptotool.constants.TinkSignatureType
 import com.github.jsmzr.cryptotool.tink.ByteArrayWriter
 import com.google.crypto.tink.CleartextKeysetHandle
 import com.google.crypto.tink.KeyTemplates
@@ -16,7 +16,7 @@ class TinkSignatureUtilTest {
     @Test
     fun allSignatureTest() {
         val data = "This is signature for Google Tink".encodeToByteArray()
-        for (value in TinkMacType.values()) {
+        for (value in TinkSignatureType.values()) {
             signatureTest(value.name, data)
         }
     }
