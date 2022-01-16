@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="root" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1028" height="455"/>
+      <xy x="20" y="20" width="1028" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -109,7 +109,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="88899" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="88899" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Hash"/>
@@ -117,10 +117,10 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="4d75f" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="4d75f" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -130,18 +130,28 @@
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Alg"/>
+                      <text value="Label"/>
                     </properties>
                   </component>
                   <component id="bef2b" class="javax.swing.JComboBox" binding="hashComboBox">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                   </component>
+                </children>
+              </grid>
+              <grid id="e1efa" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
                   <component id="1809c" class="javax.swing.JButton" binding="encodeButton" default-binding="true">
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Encode →"/>
@@ -151,7 +161,7 @@
               </grid>
             </children>
           </grid>
-          <grid id="20778" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="20778" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Mac"/>
@@ -159,10 +169,10 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="8b4e3" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="8b4e3" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -181,25 +191,45 @@
                     </constraints>
                     <properties/>
                   </component>
+                </children>
+              </grid>
+              <grid id="e9525" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="95952" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Key(hex)"/>
+                    </properties>
+                  </component>
                   <component id="cc5e" class="javax.swing.JTextField" binding="macKeyText">
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="95952" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Key(base64)"/>
-                    </properties>
-                  </component>
+                </children>
+              </grid>
+              <grid id="89331" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
                   <component id="4a10d" class="javax.swing.JButton" binding="macButton">
                     <constraints>
-                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Mac →"/>
@@ -209,7 +239,7 @@
               </grid>
             </children>
           </grid>
-          <grid id="3b810" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="3b810" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Symmetric"/>
@@ -217,10 +247,10 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="3e745" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="3e745" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -235,15 +265,33 @@
                   </component>
                   <component id="297f1" class="javax.swing.JComboBox" binding="symmetricComboBox">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <toolTipText value="if is NoPadding, then Input length not multiple of 16 bytes"/>
                     </properties>
                   </component>
+                </children>
+              </grid>
+              <grid id="dee1c" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2a1ad" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Key(hex)"/>
+                    </properties>
+                  </component>
                   <component id="39fb8" class="javax.swing.JTextField" binding="symmetricKeyText">
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -251,47 +299,32 @@
                       <toolTipText value="AES 16,24,32 bytes, DES 7 bytes, DESede 14,21 bytes"/>
                     </properties>
                   </component>
-                  <component id="2a1ad" class="javax.swing.JLabel">
+                </children>
+              </grid>
+              <grid id="5afe3" binding="ivPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="9e3a9" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Key(base64)"/>
+                      <text value="Iv(hex)"/>
                     </properties>
                   </component>
                   <component id="53ce6" class="javax.swing.JTextField" binding="symmetricIvText">
                     <constraints>
-                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <enabled value="false"/>
                       <toolTipText value="Iv length as same as block, usually block is key length, DES,DESede length is 8 bytes"/>
-                    </properties>
-                  </component>
-                  <component id="9e3a9" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Iv(base64)"/>
-                    </properties>
-                  </component>
-                  <component id="d4821" class="javax.swing.JComboBox" binding="tLenComboBox">
-                    <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <enabled value="false"/>
-                    </properties>
-                  </component>
-                  <component id="eaf69" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="TLen(bit)"/>
                     </properties>
                   </component>
                 </children>
@@ -299,14 +332,14 @@
               <grid id="c00b6" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
                   <component id="44ac2" class="javax.swing.JButton" binding="symmetricDecryptButton">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="← Decrypt"/>
@@ -314,7 +347,7 @@
                   </component>
                   <component id="410c9" class="javax.swing.JButton" binding="symmetricEncryptButton">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Encrypt →"/>
@@ -322,9 +355,36 @@
                   </component>
                 </children>
               </grid>
+              <grid id="681e9" binding="gcmPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <enabled value="true"/>
+                  <visible value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="eaf69" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="TLen(bit)"/>
+                    </properties>
+                  </component>
+                  <component id="d4821" class="javax.swing.JComboBox" binding="tLenComboBox">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
-          <grid id="9e592" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="9e592" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Asymmetric"/>
@@ -332,10 +392,10 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="70755" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="70755" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -354,75 +414,19 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="ebaf9" class="javax.swing.JTextField" binding="asymmetricPublicText">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="704a1" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Public(base64)"/>
-                    </properties>
-                  </component>
-                  <component id="f3ad8" class="javax.swing.JTextField" binding="asymmetricPrivateText">
-                    <constraints>
-                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="75493" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Private(base64)"/>
-                    </properties>
-                  </component>
-                  <component id="b7419" class="javax.swing.JComboBox" binding="asymmetricKeyComboBox">
-                    <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <toolTipText value="You can generate it here if needed"/>
-                    </properties>
-                  </component>
-                  <component id="916b1" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Key length"/>
-                    </properties>
-                  </component>
-                  <component id="16d27" class="javax.swing.JButton" binding="asymmetricKeyGenerateButton">
-                    <constraints>
-                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Generate Key Pair"/>
-                    </properties>
-                  </component>
                 </children>
               </grid>
               <grid id="dbbab" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
                   <component id="54c1c" class="javax.swing.JButton" binding="asymmetricDecryptButton">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="← Decrypt"/>
@@ -430,7 +434,7 @@
                   </component>
                   <component id="504e4" class="javax.swing.JButton" binding="asymmetricEncryptButton">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Encrypt →"/>
@@ -438,9 +442,105 @@
                   </component>
                 </children>
               </grid>
+              <grid id="f0f0e" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="aec40" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="704a1" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Public(base64)"/>
+                        </properties>
+                      </component>
+                      <component id="ebaf9" class="javax.swing.JTextField" binding="asymmetricPublicText">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="b9cc7" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="75493" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Private(base64)"/>
+                        </properties>
+                      </component>
+                      <component id="f3ad8" class="javax.swing.JTextField" binding="asymmetricPrivateText">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="17a28" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="16d27" class="javax.swing.JButton" binding="asymmetricKeyGenerateButton">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate"/>
+                    </properties>
+                  </component>
+                  <component id="916b1" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Key length"/>
+                    </properties>
+                  </component>
+                  <component id="b7419" class="javax.swing.JComboBox" binding="asymmetricKeyComboBox">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <toolTipText value="You can generate it here if needed"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
-          <grid id="249b6" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="249b6" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Signature"/>
@@ -448,10 +548,10 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="d2cfa" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="d2cfa" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -470,702 +570,220 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="629c8" class="javax.swing.JTextField" binding="signaturePublicText">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="ef9d7" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Public(base64)"/>
-                    </properties>
-                  </component>
-                  <component id="a400c" class="javax.swing.JTextField" binding="signaturePrivateText">
-                    <constraints>
-                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="97272" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Private(base64)"/>
-                    </properties>
-                  </component>
-                  <component id="8a52b" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Verify"/>
-                    </properties>
-                  </component>
-                  <grid id="258d7" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                    <border type="none"/>
-                    <children>
-                      <component id="342ce" class="javax.swing.JComboBox" binding="rsaKeyLengthComboBox">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="53452" class="javax.swing.JComboBox" binding="ecKeyLengthComboBox">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="a9685" class="javax.swing.JComboBox" binding="dsaKeyLengthComboBox">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <editable value="false"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
-                  <component id="e90c0" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Key length"/>
-                    </properties>
-                  </component>
-                  <component id="1ea06" class="javax.swing.JLabel" binding="verifyResultLabel">
-                    <constraints>
-                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <horizontalAlignment value="2"/>
-                      <horizontalTextPosition value="2"/>
-                      <text value=""/>
-                    </properties>
-                  </component>
-                  <component id="8d20e" class="javax.swing.JButton" binding="signatureKeyPairGenerateButton">
-                    <constraints>
-                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Generate Key pair"/>
-                    </properties>
-                  </component>
                 </children>
               </grid>
               <grid id="717ee" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="170" height="77"/>
-                  </grid>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
+                  <component id="5a34b" class="javax.swing.JButton" binding="signatureSignButton">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Sign ↑"/>
+                    </properties>
+                  </component>
                   <component id="ae682" class="javax.swing.JButton" binding="signatureVerifyButton">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Verify ↑"/>
                     </properties>
                   </component>
-                  <component id="5a34b" class="javax.swing.JButton" binding="signatureSignButton">
+                </children>
+              </grid>
+              <grid id="202a2" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="ef9d7" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Sign →"/>
+                      <text value="Public"/>
+                    </properties>
+                  </component>
+                  <component id="629c8" class="javax.swing.JTextField" binding="signaturePublicText">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                </children>
+              </grid>
+              <grid id="81c1d" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="97272" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Private"/>
+                    </properties>
+                  </component>
+                  <component id="a400c" class="javax.swing.JTextField" binding="signaturePrivateText">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                </children>
+              </grid>
+              <grid id="f4af3" binding="rsaKeyGeneratorPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="e90c0" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Key length"/>
+                    </properties>
+                  </component>
+                  <component id="342ce" class="javax.swing.JComboBox" binding="rsaKeyLengthComboBox">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="8d20e" class="javax.swing.JButton" binding="rsaKeyGenerateButton">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate"/>
                     </properties>
                   </component>
                 </children>
               </grid>
-            </children>
-          </grid>
-          <grid id="e5e19" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <tabbedpane title="Tink"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <tabbedpane id="e04e6" binding="tinkTabs">
+              <grid id="ba9a2" binding="ecKeyGeneratorPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="200" height="200"/>
-                  </grid>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <toolTipText value=""/>
+                  <visible value="false"/>
                 </properties>
                 <border type="none"/>
                 <children>
-                  <grid id="bfd7c" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <component id="2d42c" class="javax.swing.JLabel">
                     <constraints>
-                      <tabbedpane title="Aead"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <toolTipText value="Authenticated Encryption with Associated Data"/>
+                      <text value="Key length"/>
                     </properties>
-                    <border type="none"/>
-                    <children>
-                      <grid id="a301" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="4c23a" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Alg"/>
-                            </properties>
-                          </component>
-                          <component id="68d6e" class="javax.swing.JComboBox" binding="tinkAeadComboBox">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="151c2" class="javax.swing.JTextField" binding="tinkAeadKeyText">
-                            <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="a8823" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Key(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="b74c4" class="javax.swing.JTextField" binding="tinkAeadAssociatedText">
-                            <constraints>
-                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="4df70" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Associate(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="439cc" class="javax.swing.JButton" binding="tinkAeadKeyGenerateButton">
-                            <constraints>
-                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Generate  Key"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                      <grid id="ed10d" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="2ec52" class="javax.swing.JButton" binding="tinkAeadDecryptButton">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="← Decrypt"/>
-                            </properties>
-                          </component>
-                          <component id="9f3" class="javax.swing.JButton" binding="tinkAeadEncryptButton">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Encrypt →"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                    </children>
-                  </grid>
-                  <grid id="75d4f" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  </component>
+                  <component id="53452" class="javax.swing.JComboBox" binding="ecKeyLengthComboBox">
                     <constraints>
-                      <tabbedpane title="Daead"/>
-                    </constraints>
-                    <properties>
-                      <toolTipText value="Deterministic Authenticated Encryption with Associated Data"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <grid id="ed3d8" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="dd721" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Alg"/>
-                            </properties>
-                          </component>
-                          <component id="6b13" class="javax.swing.JComboBox" binding="tinkDaeadComboBox">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="7504b" class="javax.swing.JTextField" binding="tinkDaeadKeyText">
-                            <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="43f8a" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Key(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="ec6ff" class="javax.swing.JButton" binding="tinkDaeadKeyGenerateButton">
-                            <constraints>
-                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Generate Key"/>
-                            </properties>
-                          </component>
-                          <component id="24d1d" class="javax.swing.JTextField" binding="tinkDaeadAssociatedText">
-                            <constraints>
-                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="9f1e9" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Associate(base64)"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                      <grid id="f43b8" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="63371" class="javax.swing.JButton" binding="tinkDaeadDecryptButton">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="← Decrypt"/>
-                            </properties>
-                          </component>
-                          <component id="8d4c2" class="javax.swing.JButton" binding="tinkDaeadEncryptButton">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Encrypt →"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                    </children>
-                  </grid>
-                  <grid id="207d9" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <tabbedpane title="Mac"/>
-                    </constraints>
-                    <properties>
-                      <toolTipText value="Message Authentication Code"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <grid id="1bade" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="76bd1" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Alg"/>
-                            </properties>
-                          </component>
-                          <component id="750d9" class="javax.swing.JComboBox" binding="tinkMacComboBox">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="89c4b" class="javax.swing.JTextField" binding="tinkMacKeyText">
-                            <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="99c64" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Key(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="8a0ac" class="javax.swing.JButton" binding="tinkMacKeyGenerateButton">
-                            <constraints>
-                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Generate Key"/>
-                            </properties>
-                          </component>
-                          <component id="877c" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Verify"/>
-                            </properties>
-                          </component>
-                          <component id="1faf" class="javax.swing.JLabel" binding="tinkMacVerifyResultLabel">
-                            <constraints>
-                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <horizontalAlignment value="2"/>
-                              <horizontalTextPosition value="2"/>
-                              <text value=""/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                      <grid id="3b520" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="98e80" class="javax.swing.JButton" binding="tinkMacVerifyButton">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Verify ↑"/>
-                            </properties>
-                          </component>
-                          <component id="9b990" class="javax.swing.JButton" binding="tinkMacButton">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Mac →"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                    </children>
-                  </grid>
-                  <grid id="ac76a" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <tabbedpane title="Signature"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
-                    <border type="none"/>
-                    <children>
-                      <grid id="ccd4a" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="bed8" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Alg"/>
-                            </properties>
-                          </component>
-                          <component id="45f10" class="javax.swing.JComboBox" binding="tinkSignatureComboBox">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="48f30" class="javax.swing.JTextField" binding="tinkSignaturePrivateKeyText">
-                            <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="eb38d" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Pri(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="5b846" class="javax.swing.JTextField" binding="tinkSignaturePublicKeyText">
-                            <constraints>
-                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="3b05f" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Pub(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="1a5da" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Verify"/>
-                            </properties>
-                          </component>
-                          <component id="496a2" class="javax.swing.JLabel" binding="tinkSignatureVerifyResultLabel">
-                            <constraints>
-                              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <horizontalAlignment value="2"/>
-                              <horizontalTextPosition value="2"/>
-                              <text value=""/>
-                            </properties>
-                          </component>
-                          <component id="ec3b9" class="javax.swing.JButton" binding="tinkSignatureKeyGeneratePairButton">
-                            <constraints>
-                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Generate Key Pair"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                      <grid id="5c5e2" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="4dbfb" class="javax.swing.JButton" binding="tinkSignatureVerifyButton">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <horizontalAlignment value="0"/>
-                              <horizontalTextPosition value="0"/>
-                              <text value="Verify ↑"/>
-                              <verticalAlignment value="0"/>
-                            </properties>
-                          </component>
-                          <component id="dde3c" class="javax.swing.JButton" binding="tinkSignatureButton">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Sign →"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                    </children>
-                  </grid>
-                  <grid id="e75aa" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  </component>
+                  <component id="f9010" class="javax.swing.JButton" binding="ecKeyGenerateButton">
                     <constraints>
-                      <tabbedpane title="Hybrid"/>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <toolTipText value=""/>
+                      <text value="Generate"/>
                     </properties>
-                    <border type="none"/>
-                    <children>
-                      <grid id="b4e56" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="42065" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Alg"/>
-                            </properties>
-                          </component>
-                          <component id="5f959" class="javax.swing.JComboBox" binding="tinkHybridComboBox">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="591b5" class="javax.swing.JTextField" binding="tinkHybridPrivateKeyText">
-                            <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="a8d06" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Pri(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="7ed20" class="javax.swing.JTextField" binding="tinkHybridPublicKeyText">
-                            <constraints>
-                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="ab6a0" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Pub(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="e935f" class="javax.swing.JTextField" binding="tinkHybridContextText">
-                            <constraints>
-                              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="c2774" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Context(base64)"/>
-                            </properties>
-                          </component>
-                          <component id="9656d" class="javax.swing.JButton" binding="tinkHybridKeyGenerateButton">
-                            <constraints>
-                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Generate Key Pair"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                      <grid id="4eb31" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="b6872" class="javax.swing.JButton" binding="tinkHybridDecryptButton">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="← Decrypt"/>
-                            </properties>
-                          </component>
-                          <component id="b9a61" class="javax.swing.JButton" binding="tinkHybridEncryptButton">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Encrypt →"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                    </children>
-                  </grid>
+                  </component>
                 </children>
-              </tabbedpane>
+              </grid>
+              <grid id="167ab" binding="dsaKeyGeneratorPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <visible value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="a2f30" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Key length"/>
+                    </properties>
+                  </component>
+                  <component id="a9685" class="javax.swing.JComboBox" binding="dsaKeyLengthComboBox">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="30d9" class="javax.swing.JButton" binding="dsaKeyGenerateButton">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="34965" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="8a52b" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Sign"/>
+                    </properties>
+                  </component>
+                  <component id="9512" class="javax.swing.JTextField" binding="signText">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="f11d1" class="javax.swing.JLabel" binding="verifyResultLabel">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
         </children>

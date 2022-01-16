@@ -2,14 +2,14 @@ package com.github.jsmzr.cryptotool.constants
 
 enum class SymmetricType(value: String) {
     // AES
-    AES_ECB_NOPADDING("AES/ECB/NoPadding"),
     AES_CBC_NOPADDING("AES/CBC/NoPadding"),
+    AES_ECB_NOPADDING("AES/ECB/NoPadding"),
     AES_CFB_NOPADDING("AES/CFB/NoPadding"),
     AES_OFB_NOPADDING("AES/OFB/NoPadding"),
     AES_CTR_NOPADDING("AES/CTR/NoPadding"),
     AES_GCM_NOPADDING("AES/GCM/NoPadding"),
-    AES_ECB_PKCS5PADDING("AES/ECB/PKCS5Padding"),
     AES_CBC_PKCS5PADDING("AES/CBC/PKCS5Padding"),
+    AES_ECB_PKCS5PADDING("AES/ECB/PKCS5Padding"),
     AES_CFB_PKCS5PADDING("AES/CFB/PKCS5Padding"),
     AES_OFB_PKCS5PADDING("AES/OFB/PKCS5Padding"),
     AES_CTR_PKCS5PADDING("AES/CTR/PKCS5Padding"),
