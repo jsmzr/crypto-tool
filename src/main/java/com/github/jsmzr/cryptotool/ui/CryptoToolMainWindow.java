@@ -19,7 +19,9 @@ import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.KeyPair;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class CryptoToolMainWindow {
@@ -44,8 +46,6 @@ public class CryptoToolMainWindow {
     private JButton symmetricDecryptButton;
     private JButton symmetricEncryptButton;
     private JComboBox<Integer> tLenComboBox;
-    private JPanel gcmPanel;
-    private JPanel ivPanel;
     private JComboBox<String> asymmetricComboBox;
     private JTextField asymmetricPublicText;
     private JTextField asymmetricPrivateText;
@@ -57,16 +57,11 @@ public class CryptoToolMainWindow {
     private JTextField signaturePublicText;
     private JTextField signaturePrivateText;
     private JComboBox<Integer> rsaKeyLengthComboBox;
-    private JButton rsaKeyGenerateButton;
+    private JButton signatureKeyPairGenerateButton;
     private JButton signatureSignButton;
     private JButton signatureVerifyButton;
-    private JPanel rsaKeyGeneratorPanel;
-    private JPanel ecKeyGeneratorPanel;
-    private JPanel dsaKeyGeneratorPanel;
     private JComboBox<Integer> ecKeyLengthComboBox;
-    private JButton ecKeyGenerateButton;
     private JComboBox<Integer> dsaKeyLengthComboBox;
-    private JButton dsaKeyGenerateButton;
     private JLabel verifyResultLabel;
     private JTabbedPane tinkTabs;
     private JComboBox tinkAeadComboBox;
@@ -114,6 +109,7 @@ public class CryptoToolMainWindow {
 
     public CryptoToolMainWindow(Project project) {
         this.project = project;
+        // init UI and listener
         initTabs();
         initHash();
         initMac();
@@ -169,7 +165,7 @@ public class CryptoToolMainWindow {
                 }
             } catch (Exception exception) {
                 notify(exception.getMessage());
-                return;
+                rightContent = null;
             }
             showRightContent();
         });
@@ -186,7 +182,7 @@ public class CryptoToolMainWindow {
                 rightContent = MacUtil.mac(alg, EncodeUtil.base64ToBytes(macKeyText.getText()), leftContent);
             } catch (Exception exception) {
                 notify(exception.getMessage());
-                return;
+                rightContent = null;
             }
             showRightContent();
         });
@@ -202,8 +198,8 @@ public class CryptoToolMainWindow {
         symmetricComboBox.addActionListener(e -> {
             SymmetricInfo info = (SymmetricInfo) symmetricComboBox.getSelectedItem();
             String mode = info.getMode();
-            gcmPanel.setVisible("GCM".equals(mode));
-            ivPanel.setVisible(!"ECB".equals(mode));
+            symmetricIvText.setEnabled(!"ECB".equals(mode));
+            tLenComboBox.setEnabled("GCM".equals(mode));
         });
         symmetricEncryptButton.addActionListener(e -> {
             updateLeftContent();
@@ -215,7 +211,7 @@ public class CryptoToolMainWindow {
                 rightContent = SymmetricUtil.encrypt(info, key, leftContent, iv, tLen);
             } catch (Exception exception) {
                 notify(exception.getMessage());
-                return;
+                rightContent = null;
             }
             showRightContent();
         });
@@ -230,7 +226,7 @@ public class CryptoToolMainWindow {
                 leftContent = SymmetricUtil.decrypt(info, key, rightContent, iv, tLen);
             } catch (Exception exception) {
                 notify(exception.getMessage());
-                return;
+                leftContent = null;
             }
             showLeftContent();
         });
@@ -251,7 +247,7 @@ public class CryptoToolMainWindow {
                 rightContent = AsymmetricUtil.encrypt(alg, pubKey, leftContent);
             } catch (Exception exception) {
                 notify(exception.getMessage());
-                return;
+                rightContent = null;
             }
             showRightContent();
         });
@@ -264,7 +260,7 @@ public class CryptoToolMainWindow {
                 leftContent = AsymmetricUtil.decrypt(alg, priKey, rightContent);
             } catch (Exception exception) {
                 notify(exception.getMessage());
-                return;
+                leftContent = null;
             }
             showLeftContent();
         });
@@ -278,6 +274,8 @@ public class CryptoToolMainWindow {
                 keyPair = AsymmetricUtil.generateKey(alg, keyLength);
             } catch (Exception exception) {
                 notify(exception.getMessage());
+                asymmetricPublicText.setText("");
+                asymmetricPrivateText.setText("");
                 return;
             }
             asymmetricPublicText.setText(EncodeUtil.bytesToBase64(keyPair.getPublic().getEncoded()));
@@ -298,6 +296,9 @@ public class CryptoToolMainWindow {
         for (int i : dsaKeyLength) {
             dsaKeyLengthComboBox.addItem(i);
         }
+        ecKeyLengthComboBox.setVisible(false);
+        dsaKeyLengthComboBox.setVisible(false);
+
         signatureSignButton.addActionListener(e -> {
             updateLeftContent();
             SignatureInfo info = (SignatureInfo) signatureComboBox.getSelectedItem();
@@ -306,12 +307,13 @@ public class CryptoToolMainWindow {
                 rightContent = SignatureUtil.sign(info, priKey, leftContent);
             } catch (Exception exception) {
                 notify(exception.getMessage());
-                return;
+                rightContent = null;
             }
             showRightContent();
         });
         signatureVerifyButton.addActionListener(e -> {
             updateLeftContent();
+            updateRightContent();
             SignatureInfo info = (SignatureInfo) signatureComboBox.getSelectedItem();
             boolean verifyResult;
             try {
@@ -328,42 +330,25 @@ public class CryptoToolMainWindow {
             }
             verifyResultLabel.setVisible(true);
         });
+        Map<String, JComboBox<Integer>> map = new HashMap<>();
+        map.put("RSA", rsaKeyLengthComboBox);
+        map.put("EC", ecKeyLengthComboBox);
+        map.put("DSA", dsaKeyLengthComboBox);
         signatureComboBox.addActionListener(e -> {
             SignatureInfo info = (SignatureInfo) signatureComboBox.getSelectedItem();
             String keyType = info.getKey();
-            switch (keyType) {
-                case "RSA":
-                    rsaKeyGeneratorPanel.setVisible(true);
-                    ecKeyGeneratorPanel.setVisible(false);
-                    dsaKeyGeneratorPanel.setVisible(false);
-                    break;
-                case "EC":
-                    rsaKeyGeneratorPanel.setVisible(false);
-                    ecKeyGeneratorPanel.setVisible(true);
-                    dsaKeyGeneratorPanel.setVisible(false);
-                    break;
-                case "DSA":
-                    rsaKeyGeneratorPanel.setVisible(false);
-                    ecKeyGeneratorPanel.setVisible(false);
-                    dsaKeyGeneratorPanel.setVisible(true);
-                    break;
-            }
+            map.forEach((k, v) -> {
+                v.setVisible(keyType.equals(k));
+            });
             signaturePrivateText.setText("");
             signaturePublicText.setText("");
             verifyResultLabel.setVisible(false);
         });
 
-        rsaKeyGenerateButton.addActionListener(e -> {
-            int keyLength = (int) rsaKeyLengthComboBox.getSelectedItem();
-            updateSignatureKey("RSA", keyLength);
-        });
-        ecKeyGenerateButton.addActionListener(e -> {
-            int keyLength = (int) ecKeyLengthComboBox.getSelectedItem();
-            updateSignatureKey("EC", keyLength);
-        });
-        dsaKeyGenerateButton.addActionListener(e -> {
-            int keyLength = (int) dsaKeyLengthComboBox.getSelectedItem();
-            updateSignatureKey("DSA", keyLength);
+        signatureKeyPairGenerateButton.addActionListener(e -> {
+            SignatureInfo info = (SignatureInfo) signatureComboBox.getSelectedItem();
+            String keyType = info.getKey();
+            updateSignatureKey(keyType, (int) map.get(keyType).getSelectedItem());
         });
 
     }
@@ -386,13 +371,14 @@ public class CryptoToolMainWindow {
         for (TinkAeadType value : TinkAeadType.values()) {
             tinkAeadComboBox.addItem(value.name());
         }
-        tinkAeadComboBox.addPropertyChangeListener(e -> {
+        tinkAeadComboBox.addActionListener(e -> {
             tinkAeadKeyText.setText("");
         });
         tinkAeadKeyGenerateButton.addActionListener(e -> {
             String alg = (String) tinkAeadComboBox.getSelectedItem();
             byte[] bytes = generateKey(alg);
             if (bytes == null) {
+                tinkAeadKeyText.setText("");
                 return;
             }
             tinkAeadKeyText.setText(EncodeUtil.bytesToBase64(bytes));
@@ -401,14 +387,24 @@ public class CryptoToolMainWindow {
             updateLeftContent();
             byte[] bytes = EncodeUtil.base64ToBytes(tinkAeadKeyText.getText());
             byte[] associated = EncodeUtil.base64ToBytes(tinkAeadAssociatedText.getText());
-            rightContent = TinkAeadUtil.encrypt(leftContent, associated, bytes);
+            try {
+                rightContent = TinkAeadUtil.encrypt(leftContent, associated, bytes);
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                rightContent = null;
+            }
             showRightContent();
         });
         tinkAeadDecryptButton.addActionListener(e -> {
             updateRightContent();
             byte[] bytes = EncodeUtil.base64ToBytes(tinkAeadKeyText.getText());
             byte[] associated = EncodeUtil.base64ToBytes(tinkAeadAssociatedText.getText());
-            leftContent = TinkAeadUtil.decrypt(rightContent, associated, bytes);
+            try {
+                leftContent = TinkAeadUtil.decrypt(rightContent, associated, bytes);
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                leftContent = null;
+            }
             showLeftContent();
         });
     }
@@ -417,13 +413,14 @@ public class CryptoToolMainWindow {
         for (TinkDaeadType value : TinkDaeadType.values()) {
             tinkDaeadComboBox.addItem(value.name());
         }
-        tinkDaeadComboBox.addPropertyChangeListener(e -> {
+        tinkDaeadComboBox.addActionListener(e -> {
             tinkDaeadKeyText.setText("");
         });
         tinkDaeadKeyGenerateButton.addActionListener(e -> {
             String alg = (String) tinkDaeadComboBox.getSelectedItem();
             byte[] bytes = generateKey(alg);
             if (bytes == null) {
+                tinkDaeadKeyText.setText("");
                 return;
             }
             tinkDaeadKeyText.setText(EncodeUtil.bytesToBase64(bytes));
@@ -432,14 +429,24 @@ public class CryptoToolMainWindow {
             updateLeftContent();
             byte[] bytes = EncodeUtil.base64ToBytes(tinkDaeadKeyText.getText());
             byte[] associated = EncodeUtil.base64ToBytes(tinkDaeadAssociatedText.getText());
-            rightContent = TinkDaeadUtil.encrypt(leftContent, associated, bytes);
+            try {
+                rightContent = TinkDaeadUtil.encrypt(leftContent, associated, bytes);
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                rightContent = null;
+            }
             showRightContent();
         });
         tinkDaeadDecryptButton.addActionListener(e -> {
             updateRightContent();
             byte[] bytes = EncodeUtil.base64ToBytes(tinkDaeadKeyText.getText());
             byte[] associated = EncodeUtil.base64ToBytes(tinkDaeadAssociatedText.getText());
-            leftContent = TinkDaeadUtil.decrypt(rightContent, associated, bytes);
+            try {
+                leftContent = TinkDaeadUtil.decrypt(rightContent, associated, bytes);
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                leftContent = null;
+            }
             showLeftContent();
         });
     }
@@ -456,13 +463,19 @@ public class CryptoToolMainWindow {
             String alg = (String) tinkMacComboBox.getSelectedItem();
             byte[] bytes = generateKey(alg);
             if (bytes == null) {
+                tinkMacKeyText.setText("");
                 return;
             }
             tinkMacKeyText.setText(EncodeUtil.bytesToBase64(bytes));
         });
         tinkMacButton.addActionListener(e -> {
             updateLeftContent();
-            rightContent = TinkMacUtil.mac(leftContent, EncodeUtil.base64ToBytes(tinkMacKeyText.getText()));
+            try {
+                rightContent = TinkMacUtil.mac(leftContent, EncodeUtil.base64ToBytes(tinkMacKeyText.getText()));
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                rightContent = null;
+            }
             showRightContent();
         });
         tinkMacVerifyButton.addActionListener(e -> {
@@ -474,7 +487,7 @@ public class CryptoToolMainWindow {
                 tinkMacVerifyResultLabel.setIcon(AllIcons.General.InspectionsOK);
             } catch (Exception exception) {
                 tinkMacVerifyResultLabel.setIcon(AllIcons.CodeWithMe.CwmTerminate);
-                notify(exception.getMessage());
+                // ignore exception
             }
             tinkMacVerifyResultLabel.setVisible(true);
         });
@@ -484,7 +497,7 @@ public class CryptoToolMainWindow {
         for (TinkSignatureType value : TinkSignatureType.values()) {
             tinkSignatureComboBox.addItem(value.name());
         }
-        tinkSignatureComboBox.addPropertyChangeListener(e -> {
+        tinkSignatureComboBox.addActionListener(e -> {
             tinkSignatureVerifyResultLabel.setVisible(false);
             tinkSignaturePrivateKeyText.setText("");
             tinkSignaturePublicKeyText.setText("");
@@ -493,6 +506,8 @@ public class CryptoToolMainWindow {
             String alg = (String) tinkSignatureComboBox.getSelectedItem();
             List<byte[]> keyPair = generateKeyPair(alg);
             if (keyPair == null || keyPair.size() != 2) {
+                tinkSignaturePrivateKeyText.setText("");
+                tinkSignaturePublicKeyText.setText("");
                 return;
             }
             tinkSignaturePrivateKeyText.setText(EncodeUtil.bytesToBase64(keyPair.get(0)));
@@ -501,19 +516,25 @@ public class CryptoToolMainWindow {
         tinkSignatureButton.addActionListener(e -> {
             updateLeftContent();
             byte[] priKey = EncodeUtil.base64ToBytes(tinkSignaturePrivateKeyText.getText());
-            rightContent = TinkSignatureUtil.sign(leftContent, priKey);
+            try {
+                rightContent = TinkSignatureUtil.sign(leftContent, priKey);
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                rightContent = null;
+            }
             showRightContent();
         });
 
         tinkSignatureVerifyButton.addActionListener(e -> {
             updateLeftContent();
+            updateRightContent();
             byte[] pubKey = EncodeUtil.base64ToBytes(tinkSignaturePublicKeyText.getText());
             try {
                 TinkSignatureUtil.verify(leftContent, pubKey, rightContent);
                 tinkSignatureVerifyResultLabel.setIcon(AllIcons.General.InspectionsOK);
             } catch (Exception ex) {
                 tinkSignatureVerifyResultLabel.setIcon(AllIcons.CodeWithMe.CwmTerminate);
-                notify(ex.getMessage());
+                // ignore exception
             }
             tinkSignatureVerifyResultLabel.setVisible(true);
         });
@@ -523,7 +544,7 @@ public class CryptoToolMainWindow {
         for (TinkHybridType value : TinkHybridType.values()) {
             tinkHybridComboBox.addItem(value.name());
         }
-        tinkHybridComboBox.addPropertyChangeListener(e -> {
+        tinkHybridComboBox.addActionListener(e -> {
             tinkHybridPublicKeyText.setText("");
             tinkHybridPrivateKeyText.setText("");
         });
@@ -531,6 +552,8 @@ public class CryptoToolMainWindow {
             String alg = (String) tinkHybridComboBox.getSelectedItem();
             List<byte[]> keyPair = generateKeyPair(alg);
             if (keyPair == null || keyPair.size() != 2) {
+                tinkHybridPrivateKeyText.setText("");
+                tinkHybridPublicKeyText.setText("");
                 return;
             }
             tinkHybridPrivateKeyText.setText(EncodeUtil.bytesToBase64(keyPair.get(0)));
@@ -540,14 +563,24 @@ public class CryptoToolMainWindow {
             updateLeftContent();
             byte[] pubKey = EncodeUtil.base64ToBytes(tinkHybridPublicKeyText.getText());
             byte[] context = EncodeUtil.base64ToBytes(tinkHybridContextText.getText());
-            rightContent = TinkHybridUtil.encrypt(leftContent, context, pubKey);
+            try {
+                rightContent = TinkHybridUtil.encrypt(leftContent, context, pubKey);
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                rightContent = null;
+            }
             showRightContent();
         });
         tinkHybridDecryptButton.addActionListener(e -> {
             updateRightContent();
             byte[] priKey = EncodeUtil.base64ToBytes(tinkHybridPrivateKeyText.getText());
             byte[] context = EncodeUtil.base64ToBytes(tinkHybridContextText.getText());
-            leftContent = TinkHybridUtil.decrypt(rightContent, context, priKey);
+            try {
+                leftContent = TinkHybridUtil.decrypt(rightContent, context, priKey);
+            } catch (Exception ex) {
+                notify(ex.getMessage());
+                leftContent = null;
+            }
             showLeftContent();
         });
     }
@@ -651,7 +684,7 @@ public class CryptoToolMainWindow {
         int encodeIndex = leftTabs.getSelectedIndex();
         try {
             if (encodeIndex == 0) {
-                leftUtf8Text.setText(new String(leftContent));
+                leftUtf8Text.setText(new String(leftContent, StandardCharsets.UTF_8));
             } else if (encodeIndex == 1) {
                 leftHexText.setText(EncodeUtil.bytesToHexString(leftContent));
             } else if (encodeIndex == 2) {
@@ -672,7 +705,7 @@ public class CryptoToolMainWindow {
         int encodeIndex = rightTabs.getSelectedIndex();
         try {
             if (encodeIndex == 0) {
-                rightUtf8Text.setText(new String(rightContent));
+                rightUtf8Text.setText(new String(rightContent, StandardCharsets.UTF_8));
             } else if (encodeIndex == 1) {
                 rightHexText.setText(EncodeUtil.bytesToHexString(rightContent));
             } else if (encodeIndex == 2) {
