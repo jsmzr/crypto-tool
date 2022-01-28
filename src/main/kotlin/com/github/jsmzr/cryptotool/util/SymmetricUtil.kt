@@ -1,7 +1,9 @@
 package com.github.jsmzr.cryptotool.util
 
 import com.github.jsmzr.cryptotool.model.SymmetricInfo
+import java.security.SecureRandom
 import javax.crypto.Cipher
+import javax.crypto.KeyGenerator
 import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
@@ -11,6 +13,7 @@ import javax.crypto.spec.SecretKeySpec
  * Provide common symmetrical encryption, such as AES DES and 3DES.
  */
 object SymmetricUtil {
+    val random = SecureRandom()
     /**
      * Symmetric encrypt
      * AES/(ECB|CBC|OFB|CFB|CRT|GCM)/(PKCS5Padding|NoPadding), key length 16,24,32 bytes, iv length as same as block.
@@ -69,5 +72,19 @@ object SymmetricUtil {
             }
         }
         return cipher.doFinal(data)
+    }
+
+    @JvmStatic
+    fun generateKey(info: SymmetricInfo, length: Int): ByteArray {
+        val keyGenerator = KeyGenerator.getInstance(info.alg)
+        keyGenerator.init(length)
+        return keyGenerator.generateKey().encoded
+    }
+
+    @JvmStatic
+    fun generateIv(length: Int): ByteArray {
+        val iv = ByteArray(length)
+        random.nextBytes(iv)
+        return iv
     }
 }

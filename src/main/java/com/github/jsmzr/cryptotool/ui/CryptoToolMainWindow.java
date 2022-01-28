@@ -96,11 +96,18 @@ public class CryptoToolMainWindow {
     private JTextField tinkAeadAssociatedText;
     private JTextField tinkHybridContextText;
     private JTextField tinkDaeadAssociatedText;
+    private JComboBox aesKeyLengthComboBox;
+    private JButton symmetricKeyGenerateButton;
+    private JComboBox desedeKeyLengthComboBox;
+    private JLabel desKeyLengthLabel;
 
-    private static final int[] tLenArr = {96, 104, 112, 120, 128};
-    private static final int[] rsaKeyLength = {512, 1024, 2048, 4096};
-    private static final int[] ecKeyLength = {112, 256, 512, 571};
-    private static final int[] dsaKeyLength = IntStream.range(512, 1025).filter(o -> o % 64 == 0).toArray();
+    private static final int[] AES_KEY_LENGTH = {128, 192, 256};
+    private static final int DES_KEY_LENGTH = 56;
+    private static final int[] DESEDE_KEY_LENGTH = {112, 168};
+    private static final int[] TAG_LENGTH = {96, 104, 112, 120, 128};
+    private static final int[] RSA_KEY_LENGTH = {512, 1024, 2048, 4096};
+    private static final int[] EC_KEY_LENGTH = {112, 256, 512, 571};
+    private static final int[] DSA_KEY_LENGTH = IntStream.range(512, 1025).filter(o -> o % 64 == 0).toArray();
     private int leftTabIndex = 0;
     private int rightTabIndex = 0;
     private byte[] leftContent;
@@ -192,14 +199,57 @@ public class CryptoToolMainWindow {
         for (SymmetricType value : SymmetricType.values()) {
             symmetricComboBox.addItem(new SymmetricInfo(value.getValue()));
         }
-        for (int tLen : tLenArr) {
+        for (int keyLen : AES_KEY_LENGTH) {
+            aesKeyLengthComboBox.addItem(keyLen);
+        }
+        for (int keyLen : DESEDE_KEY_LENGTH) {
+            desedeKeyLengthComboBox.addItem(keyLen);
+        }
+        for (int tLen : TAG_LENGTH) {
             tLenComboBox.addItem(tLen);
         }
         symmetricComboBox.addActionListener(e -> {
             SymmetricInfo info = (SymmetricInfo) symmetricComboBox.getSelectedItem();
             String mode = info.getMode();
+            String alg = info.getAlg();
+            if ("AES".equals(alg)) {
+                aesKeyLengthComboBox.setVisible(true);
+                desKeyLengthLabel.setVisible(false);
+                desedeKeyLengthComboBox.setVisible(false);
+            } else if ("DES".equals(alg)) {
+                aesKeyLengthComboBox.setVisible(false);
+                desKeyLengthLabel.setVisible(true);
+                desedeKeyLengthComboBox.setVisible(false);
+            } else {
+                aesKeyLengthComboBox.setVisible(false);
+                desKeyLengthLabel.setVisible(false);
+                desedeKeyLengthComboBox.setVisible(true);
+            }
             symmetricIvText.setEnabled(!"ECB".equals(mode));
             tLenComboBox.setEnabled("GCM".equals(mode));
+        });
+        symmetricKeyGenerateButton.addActionListener(e -> {
+            SymmetricInfo info = (SymmetricInfo) symmetricComboBox.getSelectedItem();
+            String alg = info.getAlg();
+            // bit
+            int keyLen;
+            // block size (byte)
+            int ivLen;
+            if ("DES".equals(alg)) {
+                keyLen = DES_KEY_LENGTH;
+                ivLen = 8;
+            } else if ("AES".equals(alg)) {
+                keyLen = (int)aesKeyLengthComboBox.getSelectedItem();
+                ivLen = 16;
+            } else {
+                keyLen = (int) desedeKeyLengthComboBox.getSelectedItem();
+                ivLen = 8;
+            }
+
+            byte[] key = SymmetricUtil.generateKey(info, keyLen);
+            symmetricKeyText.setText(EncodeUtil.bytesToBase64(key));
+            byte[] iv = SymmetricUtil.generateIv(ivLen);
+            symmetricIvText.setText(EncodeUtil.bytesToBase64(iv));
         });
         symmetricEncryptButton.addActionListener(e -> {
             updateLeftContent();
@@ -236,7 +286,7 @@ public class CryptoToolMainWindow {
         for (AsymmetricType value : AsymmetricType.values()) {
             asymmetricComboBox.addItem(value.getValue());
         }
-        for (int keyLength : rsaKeyLength) {
+        for (int keyLength : RSA_KEY_LENGTH) {
             asymmetricKeyComboBox.addItem(keyLength);
         }
         asymmetricEncryptButton.addActionListener(e -> {
@@ -287,13 +337,13 @@ public class CryptoToolMainWindow {
         for (SignatureType value : SignatureType.values()) {
             signatureComboBox.addItem(new SignatureInfo(value.getValue()));
         }
-        for (int i : rsaKeyLength) {
+        for (int i : RSA_KEY_LENGTH) {
             rsaKeyLengthComboBox.addItem(i);
         }
-        for (int i : ecKeyLength) {
+        for (int i : EC_KEY_LENGTH) {
             ecKeyLengthComboBox.addItem(i);
         }
-        for (int i : dsaKeyLength) {
+        for (int i : DSA_KEY_LENGTH) {
             dsaKeyLengthComboBox.addItem(i);
         }
         ecKeyLengthComboBox.setVisible(false);
